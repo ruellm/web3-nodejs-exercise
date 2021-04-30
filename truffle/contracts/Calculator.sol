@@ -4,6 +4,8 @@ contract Calculator {
 
   uint result;
 
+  event NumberAdded(address responsible, uint result, uint adder);
+
   constructor() public {
     // constructor
     result=10;
@@ -21,6 +23,7 @@ contract Calculator {
   // result = result + num
   function addToNumber(uint num) public returns (uint) {
     result += num;
+    emit NumberAdded(msg.sender, result, num);
     return result;
   }
 
